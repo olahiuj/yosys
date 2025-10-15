@@ -1777,10 +1777,7 @@ std::string AST::derived_module_name(std::string stripped_name, const std::vecto
 	for (const auto &elem : parameters)
 		para_info += stringf("%s=%s", elem.first, serialize_param_value(elem.second));
 
-	if (para_info.size() > 60)
-		return "$paramod$" + sha1(para_info) + stripped_name;
-	else
-		return "$paramod" + stripped_name + para_info;
+	return "$paramod" + stripped_name + para_info;
 }
 
 // create a new parametric module (when needed) and return the name of the generated module
